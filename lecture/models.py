@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Department(models.Model):
@@ -13,6 +14,14 @@ class Student_Status(models.Model):
 
     def __str__(self):
         return self.status
+
+class Student_Grade(models.Model):
+    grade = models.CharField(max_length=3, default="")
+    verbose_grade = models.CharField(max_length=20, default="")  # e.g. 大一、大二
+
+    def __str__(self):
+        return self.verbose_grade
+
 
 class Student_Class(models.Model):
     student_class = models.CharField(max_length=1, default="")
@@ -28,7 +37,9 @@ class Student(models.Model):
     student_name =  models.CharField(max_length=20, default="")
     student_dept = models.ForeignKey(Department, blank=False, null=True, on_delete=models.RESTRICT)
     student_status = models.ForeignKey(Student_Status, blank=False, null=True, on_delete=models.RESTRICT)
+    grade = models.ForeignKey(Student_Grade, blank=False, null=False, on_delete=models.RESTRICT)
     student_class = models.ForeignKey(Student_Class, blank=True, null=True, on_delete=models.RESTRICT)
+
     def __str__(self):
         return str(self.student_dept) + str(self.student_class)  + " - " + self.id + " - " + self.student_name
 
@@ -40,7 +51,7 @@ class Selected_Result(models.Model):
     def __str__(self):
         return self.result
 
-class Feedback_Result(models.Model):                
+class Feedback_Result(models.Model):
     rank = models.IntegerField()                  # 教學評量, 1~5
 
     def __str__(self):
@@ -53,25 +64,25 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 class Course_Status(models.Model):
     course_status = models.CharField(max_length=30, default="")
 
     def __str__(self):
         return self.course_status
-    
+
 class Course_Credit(models.Model):
     course_credit = models.IntegerField()
 
     def __str__(self):
         return str(self.course_credit)
-    
+
 class Semester(models.Model):
     semester = models.CharField(max_length=10, default="")
 
     def __str__(self):
         return self.semester
-    
+
 class Course_Type(models.Model):
     course_type = models.CharField(max_length=20, default="")
 
@@ -97,13 +108,6 @@ class Location(models.Model):
     def __str__(self):
         return str(self.building) + "-" + str(self.room)
 
-class Grade(models.Model):
-    grade = models.CharField(max_length=10)
-    verbose_grade = models.CharField(max_length=20)  # e.g. 大一、大二
-
-    def __str__(self):
-        return self.verbose_grade
-
 class Course_Time(models.Model):
     course_time = models.CharField(max_length=10)
 
@@ -127,7 +131,6 @@ class Course_Info(models.Model):
     teacher = models.ForeignKey(Teacher, blank=False, null=False, on_delete=models.RESTRICT)
     student = models.ManyToManyField(Student, through='Enroll')
 
-    grade = models.ForeignKey(Grade, blank=False, null=False, on_delete=models.RESTRICT)
     course_class = models.CharField(max_length=10)  # A班、B班
     department = models.ForeignKey(Department, blank=False, null=False, on_delete=models.RESTRICT)
 
@@ -144,5 +147,3 @@ class Enroll(models.Model):
 
     class Meta:
         unique_together = [['course', 'student']]
-
- 
