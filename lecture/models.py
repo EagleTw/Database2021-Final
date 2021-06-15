@@ -143,7 +143,11 @@ class Enroll(models.Model):
 
     selected_result = models.ForeignKey(Selected_Result, on_delete=models.CASCADE)
     course_score = models.IntegerField(blank=True, null=True)
-    feedback_rank = models.ForeignKey(Feedback_Result, on_delete=models.CASCADE)
+    feedback_rank = models.ForeignKey(Feedback_Result,blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.student) + ' -> ' + str(self.course)
 
     class Meta:
         unique_together = [['course', 'student']]
+
