@@ -23,5 +23,11 @@ admin.site.register(Location)
 admin.site.register(Course_Time)
 
 admin.site.register(Student)
-admin.site.register(Course_Info)
+
+class Profile_CourseInfo(admin.ModelAdmin):
+    list_display = ('course_name', 'semester','course_type', 'teacher',
+            'location', 'course_time', 'course_credit', 'course_max_count', 
+            'department', 'course_class')
+
+admin.site.register(Course_Info, Profile_CourseInfo)
 admin.site.register(Enroll)
