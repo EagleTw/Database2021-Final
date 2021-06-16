@@ -1,5 +1,7 @@
 # Database2021-Final
 
+為中央大學資料庫設計課程，實際做出課程與學生的關係，並做到第三正規化。
+
 * Student
 
 | Column         | Field Type |
