@@ -9,7 +9,6 @@
 | student_dept   | Char       |
 | student_status | Char       |
 | student_class  | Char       |
-|                |            |
 
 
 * Course_Info 
@@ -27,5 +26,4 @@
 | course_status    | Char      |
 | teacher          | OneToOne  |
 | enroll_students  | OneToMany |
-|                  |           |
 
