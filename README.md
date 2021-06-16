@@ -1,6 +1,6 @@
 # Database2021-Final
 
-Student
+* Student
 
 | Column         | Field Type |
 | -------------- | ---------- |
@@ -12,7 +12,7 @@ Student
 |                |            |
 
 
-Course_Info 
+* Course_Info 
 
 | Column           | Column 2  |
 | ---------------- | --------- |
