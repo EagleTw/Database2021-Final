@@ -17,13 +17,15 @@
 
 ### Run Program
 
-1. `Enter folder`
-2. `python3 manage.py makemigrations`
-3. `python3 manage.py migrate`
-4. `python3 manage.py runserver`
-5. Enter browser and type in "127.0.0.1:8000/admin"
-6. Enter account and password (admin / 123456)
+1. `git clone https://github.com/Masa1u/Database2021-Final`
+2. `cd Database2021-Final`
+3. `python3 manage.py makemigrations`
+4. `python3 manage.py migrate`
+5. `python3 manage.py runserver`
+6. Enter browser and type in "127.0.0.1:8000/admin"
+7. Enter account and password (admin / 123456)
 
+你就可以透過寫好的頁面看到所有資料庫欄位設計的樣子，包括正規化。
 
 ## Table
 
